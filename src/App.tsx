@@ -1,55 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "antd";
 import "./App.css";
 import Cardfunc from "./Components/Cardfunc";
 import ItemType from "./Models/ItemType";
 
 function App() {
+  const [backgroundcolor, setbgcolor] = useState("white");
+
+  const bgcolor = (color: string) => {
+    console.log("before ", backgroundcolor);
+    setbgcolor(color);
+    console.log("after ", backgroundcolor);
+  };
   const items = [
     new ItemType(
       "Learn to play",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTwQ_4WDaG622jZ5R3qrM7FREuRobYcWfo_Q&usqp=CAU.png",
-      "Mario"
+      "Mario",
+      "yellow"
     ),
     new ItemType(
       "Delicious fruit",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwX30TYblQfkT6KQjErIsceWYu1ievYU1iIQ&usqp=CAU.png",
-      "strawberry"
+      "strawberry",
+      "green"
     ),
     new ItemType(
       "Delicious fruit",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwX30TYblQfkT6KQjErIsceWYu1ievYU1iIQ&usqp=CAU.png",
-      "strawberry."
+      "strawberry.",
+      "aqua"
     ),
     new ItemType(
       "Delicious fruit",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwX30TYblQfkT6KQjErIsceWYu1ievYU1iIQ&usqp=CAU.png",
-      "strawberry"
+      "strawberry",
+      "red"
     ),
     new ItemType(
       "Delicious fruit",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwX30TYblQfkT6KQjErIsceWYu1ievYU1iIQ&usqp=CAU.png",
-      "strawberry"
+      "strawberry",
+      "pink"
     ),
     new ItemType(
       "Delicious fruit",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwX30TYblQfkT6KQjErIsceWYu1ievYU1iIQ&usqp=CAU.png",
-      "strawberry"
+      "strawberry",
+      "white"
     ),
     new ItemType(
       "Delicious fruit",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwX30TYblQfkT6KQjErIsceWYu1ievYU1iIQ&usqp=CAU.png",
-      "strawberry"
+      "strawberry",
+      "black"
     ),
   ];
 
   return (
-    <div className="App">
-      <div>
-        <h1>Practising Cards</h1>
-        <Cardfunc Items={items}></Cardfunc>
+    <div style={{ backgroundColor: backgroundcolor }}>
+      <h1 className={"head"}>Practising Cards</h1>
+      <div className="flexstyle">
+        {items.map((item) => (
+          <Cardfunc item={item} bgcolor={bgcolor}></Cardfunc>
+        ))}
       </div>
-      <Button type="primary">Test</Button>
     </div>
   );
 }
